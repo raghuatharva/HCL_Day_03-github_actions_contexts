@@ -13,12 +13,13 @@ jobs:
         run: |
           echo " Repo name is ${{ github.repository }} "
           echo " two commands are used with the help of pipe in a single step "
+          echo " the person who responsible for triggering workflow is ${{ github.actor }}"
           
-      - name: Show actor [ who triggered workflow (push) ]
-        run: echo " the person who responsible for triggering workflow is ${{ github.actor }}"
+      # - name: Show actor [ who triggered workflow (push) ]
+      #   run: echo " the person who responsible for triggering workflow is ${{ github.actor }}"
 
-      - name: show commit msg. SHA
-        run: echo " commit SHA is ${{ github.sha }} "
+      # - name: show commit msg. SHA
+      #   run: echo " commit SHA is ${{ github.sha }} "
 
-      - name: show how many runs ran for this workflow
-        run: echo " this workflow ran ${{ github.run_number }} times and current run id is ${{ github.run_id } "
+      # - name: show how many runs ran for this workflow
+      #   run: echo " this workflow ran ${{ github.run_number }} times and current run id is ${{ github.run_id } "
