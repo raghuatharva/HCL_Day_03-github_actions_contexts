@@ -13,7 +13,6 @@ jobs:
         run: |
           echo " Repo name is ${{ github.repository }} "
           echo " two commands are used with the help of pipe in a single step "
-          echo " the person who responsible for triggering workflow is ${{ github.actor }}"
           
       - name: Show actor [ who triggered workflow (push) ]
         run: echo " the person who responsible for triggering workflow is ${{ github.actor }}"
