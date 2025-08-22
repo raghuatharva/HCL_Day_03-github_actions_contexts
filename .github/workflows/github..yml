@@ -1,0 +1,14 @@
+name: Github Contexts
+
+on: [push]
+
+jobs:
+  github-contexts-trial:
+    runs-on: ubuntu-latest
+    
+    # task which needed to be performed will be mentioned below
+    steps: 
+      - name: Show repository name
+        run: |
+          echo " Repo name is ${{ github.repository }}
+          echo " ${{ github }}
