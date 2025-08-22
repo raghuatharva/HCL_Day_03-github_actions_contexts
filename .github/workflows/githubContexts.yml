@@ -10,5 +10,4 @@ jobs:
     steps: 
       - name: Show repository name
         run: |
-          echo " Repo name is ${{ github.repository }}
-          echo " ${{ github }} "
+          echo " Repo name is ${{ github.repository }} "
