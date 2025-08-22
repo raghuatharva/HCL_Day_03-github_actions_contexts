@@ -7,7 +7,18 @@ jobs:
     runs-on: ubuntu-latest
     
     # task which needed to be performed will be mentioned below
+    
     steps: 
       - name: Show repository name
         run: |
           echo " Repo name is ${{ github.repository }} "
+          echo " two commands are used with the help of pipe in a single step "
+          
+      - name: Show actor [ who triggered workflow (push) ]
+        run: echo " the person who responsible for triggering workflow is ${{ github.actor }}"
+
+      - name: show commit msg. SHA
+        run: echo " commit SHA is ${{ github.sha }}
+
+      - name: show how many runs ran for this workflow
+        run: echo " this workflow ran $ {{ github.run_number }} and current run id is {{ github.run_id }
