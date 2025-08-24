@@ -10,7 +10,8 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
-    permissions: write #required for pushing changes
+    permissions:
+      contents: write #required for pushing changes
 
     steps:
     # Checkout code (uses GITHUB_TOKEN automatically)
