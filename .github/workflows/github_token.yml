@@ -1,0 +1,31 @@
+#github_token is used to automate things. manual chnages dont required token. but when cicd workflows need to do actions on your behalf 
+# like clone push comment , for authentication github token is used to inject token automatically.
+name: Create issue on failure of the build
+
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout code (uses GITHUB_TOKEN automatically)
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+    #changing the readme file just as a usecase
+      - name: Update readME
+        run: echo " Last updated on 5th sep " >> README.md
+        
+    # Commit and push using GITHUB_TOKEN
+      - name: Commit changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add README.md
+          git commit -m "updated readme using github actions"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
