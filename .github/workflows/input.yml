@@ -1,0 +1,16 @@
+name: input context # same like jenkins input
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "choose environment"
+        required: true
+        default: "DEV"
+
+jobs:
+  node_build: #job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: trail command run
+        run: echo "Trail run command"

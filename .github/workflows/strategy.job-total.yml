@@ -1,0 +1,17 @@
+name: Node.js CI 
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  nodebuild:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 2 # even though 3 matrix jobs are there , now only 2 will run with this
+      fail-fast: false #even if one job fails , dont stop the workflow , if true , it fails the workflow
+      matrix:
+        node-version: [16, 18, 20]
+    steps:
+      - run: echo "total jobs = ${{ strategy.job-total }}"
+      - run: echo "the job index  is  jobs = ${{ strategy.job-index }}" # 0 , 1, 2
