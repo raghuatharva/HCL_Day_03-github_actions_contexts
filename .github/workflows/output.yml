@@ -1,26 +1,27 @@
-#outputs are used to store the value generated and used in the other steps
 name: Deploy
 on:
   push:
     branches: [ "main" ]
 
 jobs:
-  node build: #job1
+  nodeBuild: # job1
     runs-on: ubuntu-latest
     outputs:
-      val: ${{steps.step1.outputs.my_val1}}
+      val: ${{ steps.step1.outputs.val1 }} # correct reference
 
     steps:
-    - name: output
-      id: step1
-      run: |
-        echo "val1=raghu" >> $GITHUB_OUTPUT
-        echo my_val2=rohan" >> $GITHUB_OUTPUT
-    - name: display
-      run: echo " ${{steps.step1.outputs.val1}} "
+      - name: output
+        id: step1
+        run: |
+          echo "val1=raghu" >> $GITHUB_OUTPUT
+          echo "val2=rohan" >> $GITHUB_OUTPUT
+
+      - name: display
+        run: echo "Step1 val1 = ${{ steps.step1.outputs.val1 }}"
 
   test:
-    needs: build
+    needs: nodeBuild   # must match job id
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{needs.build.outputs.val}}"
+      - name: use job output
+        run: echo "job output = ${{ needs.nodeBuild.outputs.val }}"

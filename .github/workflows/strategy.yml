@@ -5,7 +5,7 @@ on:
     branches: ["main"]
 
 jobs:
-  node build:
+  nodebuild:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false #even if one job fails , dont stop the workflow , if true , it fails the workflow

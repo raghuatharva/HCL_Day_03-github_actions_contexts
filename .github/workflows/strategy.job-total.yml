@@ -5,7 +5,7 @@ on:
     branches: ["main"]
 
 jobs:
-  node build:
+  nodebuild:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 2 # even though 3 matrix jobs are there , now only 2 will run with this
