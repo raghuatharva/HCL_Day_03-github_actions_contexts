@@ -1,6 +1,8 @@
 #github_token is used to automate things. manual chnages dont required token. but when cicd workflows need to do actions on your behalf 
 # like clone push comment , for authentication github token is used to inject token automatically.
-name: Create issue on failure of the build
+
+#by default , github token has only read-only access. explicitely mention if extra access needed
+name: GITHub Token
 
 on:
   push:
@@ -8,6 +10,7 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
+    permissions: write #required for pushing changes
 
     steps:
     # Checkout code (uses GITHUB_TOKEN automatically)
