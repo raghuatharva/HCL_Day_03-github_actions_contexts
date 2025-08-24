@@ -1,3 +1,5 @@
+# environment var > rep var > global/org var
+# for environment var to work , workflow should have environment mentioned
 name: Deploy
 on:
   push:
@@ -10,6 +12,7 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: DEV
     steps:
       - uses: actions/checkout@v4
 
