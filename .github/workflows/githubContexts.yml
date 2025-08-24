@@ -22,3 +22,8 @@ jobs:
 
       - name: show how many runs ran for this workflow
         run: echo " this workflow ran ${{ github.run_number }} times and current run id is ${{ github.run_id }} "
+
+      - name: deploy on the main branch
+        if: github.ref == 'refs/heads/main'
+        run: echo "deploying to production"
+        #kubeconfig details for the prod cluster and run helm charts and rollback stage added here if fails
